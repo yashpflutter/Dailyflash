@@ -9,25 +9,36 @@ class ass3 extends StatefulWidget {
 
 class _ass1State extends State {
   Color cor = Colors.red;
-  void _changeBorderColor() {
-    setState() {
-      cor = cor == Colors.red ? Colors.blue : Colors.red;
-    }
+  bool pressed = false;
+  void _changecolor() {
+    setState(() {
+      if (pressed == true) {
+        cor = Colors.blue;
+      } else {
+        cor = Colors.red;
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GestureDetector(
-            onTap: () {
-              _changeBorderColor();
-            },
-            child: Center(
-                child: Container(
-              width: 200,
-              height: 200,
-              decoration:
-                  BoxDecoration(border: Border.all(color: cor, width: 3.0)),
-            ))));
+      body: GestureDetector(
+        onTap: () {
+          pressed = true;
+          _changecolor();
+        },
+        child: Center(
+          child: Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              color: Colors.green,
+              border: Border.all(color: cor),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
